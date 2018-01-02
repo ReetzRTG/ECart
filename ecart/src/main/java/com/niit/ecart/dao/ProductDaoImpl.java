@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.ecart.model.Category;
-import com.niit.ecart.model.Product;
+import com.niit.crud.model.Category;
+import com.niit.crud.model.Product;
 
 @Repository("productDao")
 @Transactional

@@ -3,7 +3,7 @@ package com.niit.ecart.dao;
 import java.util.List;
 
 
-import com.niit.ecart.model.Product;
+import com.niit.crud.model.Product;
 
 public interface ProductDao {
 	public List<Product> list();

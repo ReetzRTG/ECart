@@ -1,4 +1,3 @@
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -28,14 +27,11 @@
           </ul>
         </li>
         <li><a href="#">Page 2</a></li>
-        <security:authorize access="hasRole('ROLE_ADMIN')"><li><a href="#">Page 3</a></li></security:authorize>
+        <li><a href="#">Page 3</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-         
-        
-        <c:if test="${pageContext.request.userPrincipal.name==null}"> <li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li></c:if>
-        <c:if test="${pageContext.request.userPrincipal.name!=null}"> <li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></c:if>
-        <c:if test="${pageContext.request.userPrincipal.name==null}"> <li><a href="${pageContext.request.contextPath}/register"><span class="glyphicon glyphicon-sign-up"></span> Sign Up</a></li></c:if>
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>

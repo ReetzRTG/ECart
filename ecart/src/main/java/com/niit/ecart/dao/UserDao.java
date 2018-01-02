@@ -1,7 +1,7 @@
 package com.niit.ecart.dao;
 import java.util.List;
 
-import com.niit.ecart.model.User;
+import com.niit.crud.model.User;
 
 
 
