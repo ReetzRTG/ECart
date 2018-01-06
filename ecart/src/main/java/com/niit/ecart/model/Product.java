@@ -1,19 +1,34 @@
 package com.niit.ecart.model;
 
+
+
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-public class Product {
+public class Product implements Serializable{
 
 	@Id
 	@GeneratedValue
 	private int productId;
 	private String productName;
 	private double productPrice;
+	@Transient
+	private MultipartFile file;
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	private String productImage;
 	@ManyToOne
 	@JoinColumn(name="categoryId")
@@ -47,6 +62,14 @@ public class Product {
 	}
 	public void setProductCategory(Category productCategory) {
 		this.productCategory = productCategory;
+	}
+
+	public boolean productStatus;
+	public boolean isProductStatus() {
+		return productStatus;
+	}
+	public void setProductStatus(boolean productStatus) {
+		this.productStatus = productStatus;
 	}
 	
 }

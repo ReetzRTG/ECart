@@ -1,10 +1,14 @@
 package com.niit.ecart.model;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Length;
@@ -17,13 +21,73 @@ public class User implements Serializable
 {
 	@Id
 	
-	private int id;
+	private String id;
 	@NotEmpty(message = "Please enter User Name")
 	private String name;
 	@NotEmpty(message = "Please enter Password")
-	@Length(min=5 , max=5)
+	@Length(min=5 , max=10)
 	private String password;
 	private String role;
+	private String email;
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+
+
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+
+
+
+
+
+
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+
+
+
+
+
+	public Cart getCart() {
+		return cart;
+	}
+
+
+
+
+
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+
+
+
+
+
+	@OneToMany(mappedBy="user")
+	private List<OrderDetails> orderDetails;
+	@OneToOne
+	@JoinColumn(name="cartId")
+	Cart cart;
 	private boolean enabled;
 
 	
@@ -31,7 +95,7 @@ public class User implements Serializable
 	
 
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -40,7 +104,7 @@ public class User implements Serializable
 
 
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
