@@ -44,6 +44,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
                   <value>com.niit.eshop.model.CartItem</value>
                   <value>com.niit.eshop.model.OrderDetails</value>
                   <value>com.niit.eshop.model.Product</value>
+                  <value>com.niit.eshop.model.Users</value>
             </list>
       </property>
 </bean>
