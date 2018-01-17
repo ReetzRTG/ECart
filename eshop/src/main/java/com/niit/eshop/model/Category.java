@@ -19,6 +19,13 @@ public class Category implements Serializable{
 	
 	private int categoryId;
 	private String categoryName;
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
+	}
+	private String categoryDescription;
 	
 	@OneToMany(mappedBy="productCategory",fetch=FetchType.EAGER)
 	List<Product> products;
@@ -41,5 +48,5 @@ public class Category implements Serializable{
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
+	
 }
