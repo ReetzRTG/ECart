@@ -8,16 +8,16 @@ import com.niit.eshop.model.Category;
 public interface CategoryDao {
 
 	public List<Category> list();
-
-	public void insertCategory(Category category);
+	
+	public  boolean insertCategory(Category category);
 
 	public java.util.List<Category> getlist();
 
 	public Category getCategoryById(int id);
 
-	public void updateCategory(Category category);
+	public boolean updateCategory(Category category);
 
-	public void deleteCategory(int id);
+	public boolean deleteCategory(int id);
 	
 	
 }

@@ -2,6 +2,7 @@ package com.niit.eshop.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,6 +18,7 @@ import com.niit.eshop.model.Category;
 public class CategoryDaoImpl implements CategoryDao{
 	@Autowired
 	private SessionFactory sessionFactory;
+	private int categoryId;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -33,25 +35,68 @@ public class CategoryDaoImpl implements CategoryDao{
         session.close();
 		return categoryList;
 	}
-	public void insertCategory(Category category) {
+	public boolean insertCategory(Category category) {
 		// TODO Auto-generated method stub
-		
+		try{
+			Session session = getSession();
+			session.save(category);
+			session.flush();
+			session.close();
+			return true;
+		}
+		catch(HibernateException e)
+		{
+			return false;
+		}
 	}
 	public List<Category> getlist() {
 		// TODO Auto-generated method stub
-		return null;
-	}
-	public Category getCategoryById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public void updateCategory(Category category) {
-		// TODO Auto-generated method stub
+		Session session = getSession();
 		
+		Query query = session.createQuery("from Category");
+		List<Category> categoryList = query.list();
+		return categoryList;
 	}
-	public void deleteCategory(int id) {
+	public Category getCategoryById(int categoryId) {
 		// TODO Auto-generated method stub
+		Session session = getSession();
 		
+		Query query = session.createQuery("from Category where categoryId = ?");
+		query.setInteger(0, categoryId);
+		return(Category) query.uniqueResult();
 	}
-
-}
+	public boolean updateCategory(Category category) {
+		// TODO Auto-generated method stub
+		try{
+			Session session = getSession();
+			session.update(category);
+			session.flush();
+			session.close();
+			return true;
+		}
+		catch(HibernateException e)
+		{
+			return false;
+		}
+	}
+	public boolean deleteCategory(int id) {
+		// TODO Auto-generated method stub
+		try{
+			Session session = getSession();
+			Query query = session.createQuery("from Category where categoryId = ?");
+			query.setInteger(0, categoryId);
+			
+			Category u=(Category) query.uniqueResult();
+			session.delete(u);
+			session.flush();
+			
+			session.close();
+			return true;
+		}
+		catch(HibernateException e)
+		{
+			return false;
+		}
+		}
+	
+	}
