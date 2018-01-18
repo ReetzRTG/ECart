@@ -20,6 +20,7 @@ public class Product implements Serializable{
 	private int productId;
 	private String productName;
 	private double productPrice;
+	private String productDescription;
 	@Transient
 	private MultipartFile file;
 	public MultipartFile getFile() {
@@ -69,6 +70,16 @@ public class Product implements Serializable{
 	}
 	public void setProductStatus(boolean productStatus) {
 		this.productStatus = productStatus;
+	}
+	public String getPrice() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String getProductDescription() {
+		return productDescription;
+	}
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
 	}
 	
 }
