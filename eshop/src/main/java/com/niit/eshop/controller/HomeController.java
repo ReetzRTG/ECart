@@ -24,17 +24,18 @@ public class HomeController {
 			return new ModelAndView("loginPage");
 		}
 	 @RequestMapping("/home")  
-	    public ModelAndView index(HttpSession session){  
+	    public ModelAndView home(HttpSession session){  
 		 ModelAndView mv= new ModelAndView("home");
 		 session.setAttribute("categoryList", categoryDao.list());
 		 mv.addObject("categoryList", categoryDao.list());
 	        return mv;  
 	    } 
 	 
-	 @RequestMapping("/home1")  
-	    public ModelAndView index1(){  
-		 ModelAndView mv= new ModelAndView("home_with_slider");
-		 mv.addObject("productList", productDao.list());
+	 @RequestMapping("/index")  
+	    public ModelAndView index(HttpSession session){  
+		 ModelAndView mv= new ModelAndView("home");
+		 session.setAttribute("categoryList", categoryDao.list());
+		 mv.addObject("categoryList", categoryDao.list());
 	        return mv;  
 	    } 
 	 

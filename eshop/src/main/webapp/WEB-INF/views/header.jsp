@@ -61,9 +61,9 @@
 <li><a href="${pageContext.request.contextPath}/cartView">Cart</a></li>
 </security:authorize>
 
-<%-- <c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/register">SignUp</a></li></c:if>
+<c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/register">SignUp</a></li></c:if>
 <c:if test="${pageContext.request.userPrincipal.name!=null}"><li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></c:if>
-<c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/loginPage">Login</a></li></c:if> --%>
+<c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/loginPage">Login</a></li></c:if>
 
 
 </ul>

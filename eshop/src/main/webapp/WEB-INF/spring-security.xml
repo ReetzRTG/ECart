@@ -13,7 +13,7 @@ xmlns:beans="http://www.springframework.org/schema/beans"
         <csrf disabled="true"/>
          
         <intercept-url pattern="/test" access="isAnonymous()" />
-        <intercept-url pattern="/index" access="isAnonymous()" />
+        
         <intercept-url pattern="/showproducts" access="isAnonymous()" />
         <intercept-url pattern="/contact" access="isAnonymous()" />
         <intercept-url pattern="/register" access="isAnonymous()" />
@@ -23,6 +23,8 @@ xmlns:beans="http://www.springframework.org/schema/beans"
  		<intercept-url pattern="/buyproduct" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/home"
             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+            <intercept-url pattern="/index"
+            access="isAnonymous()"  />
             <intercept-url pattern="/profile"
             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 	<intercept-url pattern="/viewdetail"

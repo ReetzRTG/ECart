@@ -29,7 +29,7 @@
 
               <h2><label>${product.productName}</label></h2>
               <h3>${product.price}</h3>
-              <h4>${product.productcategories.categoryName}</h4> <br> 
+              <h4>${product.productCategory.categoryName}</h4> <br> 
 
 
 

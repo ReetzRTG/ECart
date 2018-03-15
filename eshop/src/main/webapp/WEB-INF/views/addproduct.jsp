@@ -16,7 +16,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<title>Admin Add_Products</title>
+<title> Add_Products</title>
 
 <style>
 table {
@@ -34,22 +34,26 @@ td, th {
 </head>
 
 
-
+<body>
 <div class="container">
  <div class="row" >
-  <div align="center"  width="70%"  class="table table-hover table-condensed table-bordered"> 
+  <div align="center"  width="70%"  class="table table-hover table-condensed table-bordered background-color: pink"> 
 <div class="col-sm-6" >
   <h1><span class="label label-success"><b>Add New Product</b></span></h1>
           
-       <form:form method="post" action="${context}/saveProduct"  enctype="multipart/form-data">    
+       <form:form method="post" action="${context}/saveproduct"  enctype="multipart/form-data">    
         <table class="table">    
          <tr>    
           <td>Name : </td>   
           <td><form:input path="productName" required="true" /></td>  
          </tr>    
          <tr>    
+          <td>Description :</td>    
+          <td><form:input path="productDescription" required="true" /></td>  
+         </tr> 
+         <tr>    
           <td>Price :</td>    
-          <td><form:input path="productPrice" required="true" /></td>  
+          <td><form:input path="price" required="true" /></td>  
          </tr> 
          <tr> 
          <form:select class="form-control" path="productCategory.categoryId">
@@ -77,4 +81,6 @@ td, th {
 </div>
 
 </div>
-</div></div>
+</div>
+</div>
+</body>

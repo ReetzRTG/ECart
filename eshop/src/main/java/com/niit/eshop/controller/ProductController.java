@@ -41,7 +41,7 @@ public class ProductController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveproduct", method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("product") Product product, HttpServletRequest request,
 			@RequestParam("file") MultipartFile file , HttpSession session) {
 

@@ -17,10 +17,7 @@ import com.niit.eshop.model.Users;
 public class UserController {
 	  @Autowired 
 	  UsersDao usersDao;
-	  @RequestMapping("/index")  
-	    public ModelAndView index(){  
-	        return new ModelAndView("index");  
-	    } 
+	  
 	  
 	@RequestMapping("/usersform")  
     public ModelAndView showform(){  
