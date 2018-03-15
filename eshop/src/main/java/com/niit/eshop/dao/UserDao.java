@@ -8,7 +8,7 @@ import com.niit.eshop.model.User;
 public interface UserDao {
 	public void addUsers(User users);
 
-	public User getUsersById(int userId);
+	public User getUsersById(String userId);
 
 	public List<User> getAllUsers(String un);
 

@@ -2,6 +2,8 @@ package com.niit.eshop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,14 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.eshop.dao.CartDao;
 import com.niit.eshop.dao.UsersDao;
+import com.niit.eshop.model.Cart;
+import com.niit.eshop.model.User;
 import com.niit.eshop.model.Users;
 
 @Controller  
 public class UserController {
 	  @Autowired 
 	  UsersDao usersDao;
-	  
+	  @Autowired
+	  CartDao cartDao;
 	  
 	@RequestMapping("/usersform")  
     public ModelAndView showform(){  
@@ -63,4 +69,42 @@ public class UserController {
        usersDao.deleteUsers(id);
         return new ModelAndView("redirect:/viewusers");  
     }  
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView userRegistrationView(){
+    	return new ModelAndView("userregistrationview", "command",new Users());
+    }
+    
+    @RequestMapping(value="/registerUser",method=RequestMethod.POST)
+    public ModelAndView registerUser(@ModelAttribute("users")Users users,HttpSession httpSession){
+    	ModelAndView modelAndView=new ModelAndView("userRegistrationView","command",new User());
+    	if(usersDao.getUsersById(users.getUserId())!=null){
+    		System.out.println("at same use Id");
+    		modelAndView.addObject("errorMessage","Please try with different user Id.");
+    		return modelAndView;
+    		
+    	}else{
+    		
+    		users.setEnabled(true);
+    		users.setRole("ROLE_USER");
+    		Cart cart=new Cart();
+    		cart.setCartStatus(true);
+    		
+    		if(cartDao.insertCart(cart)){
+    			users.setCart(cart);
+    			if(usersDao.addUsers(users)){
+    				modelAndView.addObject("successMessage","You have been registered successfully.");
+    				return modelAndView;
+    				
+    			}else{
+    				
+    				modelAndView.addObject("errorMessage","User has not been inserted!");
+    				return modelAndView;
+    			}
+    		}else{
+    			
+    			modelAndView.addObject("errorMessage","Cart has not been inserted!");
+    			return modelAndView;
+    		}
+    	} 
+    }
 }

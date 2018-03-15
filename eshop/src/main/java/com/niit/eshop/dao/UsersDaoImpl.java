@@ -28,7 +28,7 @@ public class UsersDaoImpl implements UsersDao {
 		return sessionFactory.openSession();
 	}
 
-	public void addUsers(Users users) {
+	public boolean addUsers(Users users) {
 		// TODO Auto-generated method stub
 
 		Session session = getSession();
@@ -40,6 +40,7 @@ public class UsersDaoImpl implements UsersDao {
 		session.flush();
 
 		session.close();
+		return false;
 
 	}
 

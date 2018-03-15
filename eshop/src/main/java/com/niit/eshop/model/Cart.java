@@ -34,15 +34,15 @@ public class Cart implements Serializable {
 	public void setCartTotal(double cartTotal) {
 		this.cartTotal = cartTotal;
 	}
-	public String getCartStatus() {
+	public boolean getCartStatus() {
 		return cartStatus;
 	}
-	public void setCartStatus(String cartStatus) {
-		this.cartStatus = cartStatus;
+	public void setCartStatus(boolean b) {
+		this.cartStatus = b;
 	}
 	@OneToMany(mappedBy="cart")
 	private List<CartItem> cartItems;
 	private double cartTotal;
-	private String cartStatus;
+	private boolean cartStatus;
 
 }

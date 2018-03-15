@@ -90,6 +90,36 @@ public class Users implements Serializable
 	// parameterised constructor
 	// getter setter
 	// validation
+
+
+
+
+
+
+	public void setEnabled(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+	public void setRole(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+	public void setCart(Cart cart) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
  

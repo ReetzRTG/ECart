@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.eshop.model.Cart;
+import com.niit.eshop.model.CartItem;
 import com.niit.eshop.model.User;
 
 @Repository("CartDaoImpl")
@@ -76,7 +77,7 @@ public class CartDaoImpl implements CartDao {
 			session.close();
 		}	
 		}
-	public List<Cart> getAllCart(){
+	public List<CartItem> getAllCart(){
 		try{
 			Session session=getSession();
 			Query query=session.createQuery("form Cart");
