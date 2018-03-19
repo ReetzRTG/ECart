@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.eshop.dao.CartDao;
+import com.niit.eshop.dao.UserDao;
 import com.niit.eshop.dao.UsersDao;
 import com.niit.eshop.model.Cart;
 import com.niit.eshop.model.User;
@@ -24,6 +25,8 @@ public class UserController {
 	  UsersDao usersDao;
 	  @Autowired
 	  CartDao cartDao;
+	  @Autowired
+	  UserDao userDao;
 	  
 	@RequestMapping("/usersform")  
     public ModelAndView showform(){  
@@ -71,27 +74,27 @@ public class UserController {
     }  
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView userRegistrationView(){
-    	return new ModelAndView("userregistrationview", "command",new Users());
+    	return new ModelAndView("userRegistrationView", "command",new User());
     }
     
     @RequestMapping(value="/registerUser",method=RequestMethod.POST)
-    public ModelAndView registerUser(@ModelAttribute("users")Users users,HttpSession httpSession){
+    public ModelAndView registerUser(@ModelAttribute("user")User user,HttpSession httpSession){
     	ModelAndView modelAndView=new ModelAndView("userRegistrationView","command",new User());
-    	if(usersDao.getUsersById(users.getUserId())!=null){
+    	if(userDao.getUsersById(user.getId())!=null){
     		System.out.println("at same use Id");
     		modelAndView.addObject("errorMessage","Please try with different user Id.");
     		return modelAndView;
     		
     	}else{
     		
-    		users.setEnabled(true);
-    		users.setRole("ROLE_USER");
+    		user.setEnabled(true);
+    		user.setRole("ROLE_USER");
     		Cart cart=new Cart();
     		cart.setCartStatus(true);
     		
     		if(cartDao.insertCart(cart)){
-    			users.setCart(cart);
-    			if(usersDao.addUsers(users)){
+    			user.setCart(cart);
+    			if(userDao.addUsers(user)){
     				modelAndView.addObject("successMessage","You have been registered successfully.");
     				return modelAndView;
     				

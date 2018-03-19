@@ -2,6 +2,7 @@ package com.niit.eshop.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,14 +31,20 @@ public class UserDaoImpl implements UserDao {
 		return sessionFactory.openSession();
 	}
 
-	public void addUsers(User users) {
+	public boolean addUsers(User users) {
 		// TODO Auto-generated method stub
-
-		Session session = getSession();
-
-		String s = users.getName();
-
-		users.setEnabled(true);
+		Session session=getSession();
+		try{
+			session.save(users);
+			return true;
+		}catch(HibernateException e){
+			e.printStackTrace();
+			return false;
+		}
+		finally{
+			session.flush();
+			session.close();
+		}
 
 		//UserRoles ur = new UserRoles();
 		//ur.setRoleName("USER");
@@ -81,17 +88,21 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	
-	public void editUsers(User users)
-	 {
-		 //Transaction tx = getSession().beginTransaction();
-		 Session s=getSession();
-		 
-		 users.setEnabled(true);
-		 s.update(users);
-		 s.flush();
-		 s.close();
-		// tx.commit();
-	 }
+	public boolean editUsers(User users) {
+		// TODO Auto-generated method stub
+		Session session=getSession();
+		try{
+			session.save(users);
+			return true;
+		}catch(HibernateException e){
+			e.printStackTrace();
+			return false;
+		}
+		finally{
+			session.flush();
+			session.close();
+		}
+	}
 
 	public User getUsersById1(String userId) {
 		// TODO Auto-generated method stub
