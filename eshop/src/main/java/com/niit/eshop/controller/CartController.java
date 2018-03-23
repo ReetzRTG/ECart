@@ -133,7 +133,9 @@ public class CartController {
 		System.out.println("at addToOrderDetails");
 		ModelAndView modelAndView=new ModelAndView("redirect:/orderDetails");
 		User user=userDao.getUsersById(principal.getName());
+		System.out.println("AAAAAAAA "+user.getName());
 		orderDetails.setUser(user);
+		System.out.println("BBBBBB");
 		Date d=new Date(System.currentTimeMillis());
 		Cart cart=user.getCart();
 		orderDetails.setOrderDetailsTotal(tot);

@@ -17,12 +17,12 @@
         <span class="icon-bar"></span>                        
       </button>
      
-      <a class="navbar-brand" href="#"><i class="fas fa-shopping-cart"></i>ecart</a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/home"><i class="fas fa-shopping-cart"></i>ecart</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
            <!-- each <li> </li> is one menu option -->
-        <li class="active"><a href="${pageContext.request.contextPath}/index">Home</a></li>
+        <li class="active"><a href="${pageContext.request.contextPath}/home">Home</a></li>
         <!-- <li class="dropdown"> is used to create a menu option which will have sub menu -->
         <li class="dropdown">
         
@@ -61,9 +61,9 @@
 <li><a href="${pageContext.request.contextPath}/cartView">Cart</a></li>
 </security:authorize>
 
-<c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/register">SignUp</a></li></c:if>
+<%-- <c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/register">SignUp</a></li></c:if>
 <c:if test="${pageContext.request.userPrincipal.name!=null}"><li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li></c:if>
-<c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/loginPage">Login</a></li></c:if>
+<c:if test="${pageContext.request.userPrincipal.name==null}"><li><a href="${pageContext.request.contextPath}/loginPage">Login</a></li></c:if> --%>
 
 
 </ul>
