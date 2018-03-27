@@ -62,7 +62,7 @@ td, th {
           <td><form:input path="price"  /></td>  
          </tr> 
          <tr>
-         <form:select class="form-control" path="productcategory.categoryId">
+         <form:select class="form-control" path="productCategory.categoryId">
          <c:forEach items="${categoryList}" var="productCategory">
          <form:option value="${productCategory.categoryId}">
          ${productCategory.categoryName}

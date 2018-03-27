@@ -54,7 +54,10 @@
       <ul class="nav navbar-nav">
 
 <security:authorize access="hasRole('ROLE_ADMIN')">
-<li><a href="${context}/viewProducts">Admin Control</a></li>
+<li><a href="${context}/viewproducts">Admin Control</a></li>
+<li><a href="${context}/addCategory">Add Category</a></li>
+<li><a href="${context}/viewCategory">View Categories</a></li>
+<li><a href="${context}/addproduct">Add Product</a></li>
 </security:authorize>
 
 <security:authorize access="hasRole('ROLE_USER')">
