@@ -28,7 +28,6 @@
       margin: auto;
       min-height:200px;
   }
-
  
   @media (max-width: 600px) {
     .carousel-caption {
@@ -50,18 +49,18 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="${pageContext.request.contextPath}\resources\img\Lenovo-Yoga-720.png" alt="Image">
+        <img src="${pageContext.request.contextPath}\resources\img\Asus_Predator.jpg" alt="Image">
         <div class="carousel-caption">
-          <h3>New Lenovo Yoga 720</h3>
-          <p>This week's top stories...</p>
+          <h3>Asus Predator</h3>
+          <p>This week's most selling Laptop</p>
         </div>      
       </div>
 
       <div class="item">
-        <img src="${pageContext.request.contextPath}\resources\img\9to5google-hero.jpg" alt="Image">
+        <img src="${pageContext.request.contextPath}\resources\img\Samsung_Galaxy_S9.jpg" alt="Image">
         <div class="carousel-caption">
-          <h3>Best selling Smartphones</h3>
-          <p>This week's top stories...</p>
+          <h3>Samsung Galaxy S9</h3>
+          <p>This week's new launch</p>
         </div>      
       </div>
     </div>
