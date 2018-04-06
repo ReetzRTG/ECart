@@ -53,7 +53,7 @@ td, th {
          </tr> 
          <tr>    
           <td>Price :</td>    
-          <td><form:input path="price" required="true" /></td>  
+          <td><form:input path="productPrice" required="true" /></td>  
          </tr> 
          <tr> 
          <form:select class="form-control" path="productCategory.categoryId">
